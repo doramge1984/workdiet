@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제미나이 인 크롬이란? · 1분 설명</title>
+<style>
+:root{
+  --cream1:#fdfcf7;--cream2:#f5f1e6;--paper:#fff;--ink:#1e2b4a;--sub:#5a6472;
+  --line:#e9e3d2;--gold:#bd982f;--gold2:#d9b84e;--goldsoft:#faf4e0;--blue:#5b63d6;--bluesoft:#e9eafb;
+  --shadow:0 22px 56px rgba(80,65,20,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#0d0f12;color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
+#deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:7vh 9vw;
+  background:linear-gradient(160deg,var(--cream1),var(--cream2));opacity:0;transition:opacity .4s}
+.slide.on{display:flex;opacity:1}
+.kick{font-size:clamp(12px,1.5vw,18px);font-weight:800;color:var(--gold);margin-bottom:14px;letter-spacing:.01em}
+.h{font-size:clamp(26px,4.8vw,58px);font-weight:800;line-height:1.18;letter-spacing:-.02em;color:var(--ink)}
+.h .g{color:var(--gold)}
+.lead{font-size:clamp(15px,2vw,24px);color:var(--sub);font-weight:500;line-height:1.6;margin-top:18px}
+.cap{font-size:clamp(13px,1.6vw,20px);font-weight:700;color:var(--gold);margin-top:26px}
+.cap .d{color:var(--sub);font-weight:600}
+.row{display:flex;gap:4vw;align-items:center}
+.col-t{flex:0 0 42%}.col-a{flex:1;display:flex;justify-content:center}
+.win{width:100%;max-width:560px;background:var(--paper);border-radius:15px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.wbar{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#f4f1ea;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:5px}.dots i{width:10px;height:10px;border-radius:50%;background:#d6d1c4;display:block}
+.url{flex:1;background:#fff;border:1px solid var(--line);border-radius:7px;font-size:11.5px;color:#8a8577;padding:5px 11px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sp{width:28px;height:28px;border-radius:50%;flex:0 0 28px;background:radial-gradient(circle at 30% 30%,#7b8cff,#5b63d6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.wbody{display:flex;min-height:200px}
+.page{flex:1;padding:18px}.pt{font-size:14px;font-weight:800;color:#2a2d33;margin-bottom:13px}
+.sk{height:10px;border-radius:5px;background:#eceadf;margin:9px 0}
+.side{flex:0 0 46%;background:#faf8f2;border-left:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:10px}
+.ask{background:var(--bluesoft);color:#2f3140;font-size:12px;line-height:1.5;border-radius:11px 11px 11px 3px;padding:10px 12px;font-weight:600;align-self:flex-end}
+.ans{background:var(--goldsoft);border:1px solid #efe3bf;border-radius:3px 11px 11px 11px;padding:11px 12px;font-size:12px;line-height:1.7;color:#5f511f}
+.ans b{color:var(--gold)}
+.cards{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+.card{flex:1;min-width:200px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(80,65,20,.07)}
+.card .ic{width:46px;height:46px;border-radius:13px;background:var(--goldsoft);border:1px solid #efe3bf;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:13px}
+.card h3{font-size:clamp(16px,1.8vw,22px);font-weight:800;color:var(--ink);margin-bottom:6px}
+.card p{font-size:clamp(13px,1.4vw,16px);color:var(--sub);line-height:1.55;font-weight:500}
+.toolbar{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:9px 12px;box-shadow:var(--shadow);max-width:520px;width:100%}
+.toolbar .u{flex:1;background:#f4f1ea;border-radius:30px;padding:9px 16px;font-size:13px;color:#8a8577}
+.toolbar .i{width:32px;height:32px;border-radius:50%;background:#f0ede4;display:flex;align-items:center;justify-content:center;font-size:15px;color:#8a8577}
+.toolbar .i.hot{background:radial-gradient(circle at 30% 30%,#7b8cff,#5b63d6);color:#fff;box-shadow:0 0 0 6px rgba(91,99,214,.18);transform:scale(1.14)}
+.cover{align-items:flex-start;justify-content:center}
+.cover .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:8px 17px;font-size:clamp(12px,1.4vw,16px);font-weight:800;color:var(--gold);box-shadow:0 6px 16px rgba(80,65,20,.07);margin-bottom:24px}
+.cover h1{font-size:clamp(34px,7vw,88px);font-weight:800;line-height:1.08;letter-spacing:-.03em}
+.cover h1 .g{color:var(--gold)}
+.cover .who{margin-top:26px;font-size:clamp(14px,1.8vw,22px);color:var(--ink);font-weight:700}
+.cover .who span{color:var(--sub);font-weight:500}
+.end{align-items:center;justify-content:center;text-align:center}
+.end h2{font-size:clamp(30px,6vw,66px);font-weight:800;letter-spacing:-.02em}
+.end h2 .g{color:var(--gold)}
+.end .lead{max-width:660px}
+#bar{position:fixed;left:0;top:0;height:4px;background:var(--gold);width:0;z-index:40;transition:width .35s}
+#count{position:fixed;right:18px;bottom:15px;font-size:12px;color:var(--sub);font-weight:700;z-index:40;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:30px;padding:5px 12px}
+#hint{position:fixed;left:18px;bottom:15px;font-size:11.5px;color:var(--sub);z-index:40;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:30px;padding:5px 12px;opacity:.9}
+.nav{position:fixed;top:0;bottom:0;width:22%;z-index:30;cursor:pointer}.nav.l{left:0}.nav.r{right:0}
+@media(max-width:720px){.row{flex-direction:column;align-items:flex-start;gap:24px}.col-t,.col-a{flex:1 1 100%;width:100%}.slide{padding:7vh 7vw}#hint{display:none}}
+.askbtn{display:inline-flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:16px 30px;font-size:clamp(17px,2.2vw,27px);font-weight:700;color:#2a2d33;box-shadow:var(--shadow)}.gstar{font-size:1.15em;background:linear-gradient(135deg,#4285f4 0%,#9b72cb 50%,#d96570 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}.askhint{font-size:clamp(12px,1.4vw,16px);color:var(--sub);font-weight:600}</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="nav l" onclick="prev()"></div>
+<div class="nav r" onclick="next()"></div>
+<div id="deck">
+
+  <section class="slide cover on">
+    <span class="badge">✦ 1분 설명 · 크롬 속 제미나이</span>
+    <h1>제미나이 인<br>크롬<span class="g">이란?</span></h1>
+    <div class="who">딱 1분이면 이해돼요 <span>· 7급 직무역량 향상과정(3기) · 강사 이애진</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">1 · 이 도구는?</div>
+    <div class="row">
+      <div class="col-t">
+        <div class="h">지금 보는 화면<br><span class="g">옆에서</span> 묻는<br>제미나이</div>
+        <div class="lead">새 창으로 옮기지 않아요.<br>보던 웹페이지·PDF 그대로, 옆 칸에서 바로 물어봐요.</div>
+      </div>
+      <div class="col-a">
+        <div class="win">
+          <div class="wbar"><div class="dots"><i></i><i></i><i></i></div><div class="url">우리학교 · 방과후학교 프로그램 신청 안내</div><div class="sp">✦</div></div>
+          <div class="wbody">
+            <div class="page"><div class="pt">방과후학교 프로그램 신청 안내</div><div class="sk" style="width:95%"></div><div class="sk" style="width:86%"></div><div class="sk" style="width:92%"></div><div class="sk" style="width:66%"></div></div>
+            <div class="side"><div class="ask">이 안내문 핵심만 3줄로 요약해 줘</div><div class="ans"><b>⊙</b> 신청 9/1~9/12 오후 5시까지<br><b>⊙</b> 과목당 월 3만 원<br><b>⊙</b> 급여 대상 가정은 무료</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">화면에서 ‘Gemini에게 물어보기’를 누르면 열려요. <span class="d">탭을 옮기지 않아요.</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">2 · 켜는 법</div>
+    <div class="row">
+      <div class="col-t">
+        <div class="h"><span class="g">‘Gemini에게</span><br>물어보기’를<br>누르세요</div>
+        <div class="lead">화면에서 ‘Gemini에게 물어보기’를 누르면<br>옆 칸에 제미나이가 열려요. (아이콘으로도 OK)</div>
+      </div>
+      <div class="col-a">
+        <div style="display:flex;flex-direction:column;gap:20px;align-items:center;width:100%"><div class="askbtn"><span class="gstar">✦</span> Gemini에게 물어보기</div><div class="askhint">▲ 보던 화면에 이렇게 떠요 — 누르면 옆 칸이 열려요</div></div>
+      </div>
+    </div>
+    <div class="cap">안 보이면? <span class="d">크롬을 최신 버전으로 업데이트하면 나타나요.</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">3 · 뭘 할 수 있나요?</div>
+    <div class="h" style="margin-bottom:30px;">보던 화면에서 <span class="g">바로</span> 세 가지</div>
+    <div class="cards">
+      <div class="card"><div class="ic">📄</div><h3>요약</h3><p>긴 공지·PDF를 핵심만 3줄로. "회의에서 보고하게 요약해 줘."</p></div>
+      <div class="card"><div class="ic">📨</div><h3>안내 메시지</h3><p>어려운 공문을 교직원 안내 메시지로 30초면 끝.</p></div>
+      <div class="card"><div class="ic">🔍</div><h3>비교</h3><p>@로 다른 탭을 붙여 두 안내문을 나란히 비교.</p></div>
+    </div>
+    <div class="cap">묻는 방법은 늘 똑같아요. <span class="d">보던 화면에서 ✦ 누르고 말하기.</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="kick">꼭 기억 · 할루시네이션</div>
+    <div class="row">
+      <div class="col-t">
+        <div class="h">숫자·조항은<br>꼭 <span class="g">되물어</span><br>확인하세요</div>
+        <div class="lead">AI는 그럴듯하게 지어내기도 해요.<br>날짜·금액·규정은 원문으로 한 번 더.</div>
+      </div>
+      <div class="col-a">
+        <div class="win">
+          <div class="wbar"><div class="dots"><i></i><i></i><i></i></div><div class="url">복무 규정.pdf</div><div class="sp">✦</div></div>
+          <div class="wbody">
+            <div class="page"><div class="pt">제○조 (휴가)</div><div class="sk" style="width:94%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:90%"></div></div>
+            <div class="side"><div class="ask">휴가는 경우별로 며칠인지 조항 번호와 함께 알려 줘</div><div class="ans"><b>!</b> 답에 나온 <b>조항·일수</b>는 원문에서 꼭 다시 확인</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">중요한 업무일수록 <span class="d">AI 답 + 원문 확인, 두 단계로.</span></div>
+  </section>
+
+  <section class="slide end">
+    <div class="kick">이제 직접 해봐요</div>
+    <h2>보던 화면에서<br>✦ 누르고 <span class="g">말하기</span></h2>
+    <div class="lead">오늘은 ① 공문 → 교직원 안내 메시지 → ② 두 안내문 비교 → ③ 한 줄로 결과 바꾸기 순서로 실습해요.</div>
+  </section>
+
+</div>
+<div id="count"></div>
+<div id="hint">← → · 스페이스 · F 전체화면</div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+var bar=document.getElementById('bar'),cnt=document.getElementById('count');
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i)});bar.style.width=((i+1)/S.length*100)+'%';cnt.textContent=(i+1)+' / '+S.length}
+function next(){show(i+1)}function prev(){show(i-1)}
+document.addEventListener('keydown',function(e){
+ if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();next()}
+ else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+ else if(e.key==='Home'){show(0)}else if(e.key==='End'){show(S.length-1)}
+ else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+});
+show(0);
+</script>
+</body>
+</html>
